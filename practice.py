@@ -16,18 +16,26 @@ def pop_random(lst):
 
 
 def randomize_pairs(list1, list2):
-    for name in list1:
-        print("giver", name['name'])
+    pairs = {}
+    for counter, name in enumerate(list1):
         findPairing = name['pairing']
         pairingMatch = [x for x in list2 if x['pairing'] == findPairing]
-        for name in pairingMatch:
-            list2.remove(name)
+        for person in pairingMatch:
+            list2.remove(person)
         chosenPerson = pop_random(list2)
-        print("chosenPerson", chosenPerson['name'])
-        #send email with "name" as the recepient of email and the chosenPerson as the message body
-        for name in pairingMatch:
-            list2.append(name)
+        for person in pairingMatch:
+            list2.append(person)
+        pairs[counter+1] = (name['name'], chosenPerson['name'])
+        # print("giver", name['name'])
+        # print("chosenPerson", chosenPerson['name'])
+        print(pairs)
 
+working = False
+while not working:
+    try:
+        randomize_pairs(giver, receiver)
+        working = True
+    except ...:
+        pass
 
-randomize_pairs(giver, receiver)
 
